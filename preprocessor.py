@@ -1,7 +1,7 @@
 import re
 import pandas as pd
 
-'''
+
 def preprocessy12(data):
     pattern = r'\d{1,2}/\d{1,2}/\d{2},\s\d{1,2}:\d{2}\s[APap][Mm]\s-\s'
 
@@ -128,9 +128,9 @@ def preprocessY24(data):
 
     return df
 
-'''
 
-def preprocess(data):
+
+def preprocessY12(data):
     
 
     pattern = r'\d{1,2}/\d{1,2}/\d{4},\s\d{1,2}:\d{2}\s[APap][Mm]\s-\s'
