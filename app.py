@@ -19,6 +19,8 @@ if uploaded_file is not None:
         df=preprocessor.preprocessy24(data)
     elif re.match('\d{1,2}/\d{1,2}/\d{4},\s\d{1,2}:\d{2}\s-\s',(data.split("\n")[0])):
         df=preprocessor.preprocessY24(data)
+    else:
+        df=preprocessor.preprocessY12(data)
     #df=preprocessor.preprocess(data)
 
     st.dataframe(df)
