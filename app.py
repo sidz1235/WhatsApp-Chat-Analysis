@@ -12,7 +12,10 @@ if uploaded_file is not None:
     data=bytes_data.decode("utf-8")
 
     for i in range(10):
-        if re.match(r'\d{1,2}/\d{1,2}/\d{2},\s\d{1,2}:\d{2}\s[APap][Mm] - .*',(data.split("\n")[0])):
+        if re.match(r'\[\d{2}/\d{2}/\d{2}, \d{1,2}:\d{2}:\d{2}\s?[APap][Mm]\] .+? .*', data.split("\n")[0]):
+            df = preprocessor.preprocessiosy12(data)
+            break
+        elif re.match(r'\d{1,2}/\d{1,2}/\d{2},\s\d{1,2}:\d{2}\s[APap][Mm] - .*',(data.split("\n")[0])):
             df=preprocessor.preprocessy12(data)
             break
         elif re.match(r'\d{1,2}/\d{1,2}/\d{4},\s\d{1,2}:\d{2}\s[APap][Mm] - .*',(data.split("\n")[0])):
