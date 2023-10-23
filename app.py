@@ -11,16 +11,19 @@ if uploaded_file is not None:
     bytes_data = uploaded_file.getvalue()
     data=bytes_data.decode("utf-8")
 
-    if re.match(r'\d{1,2}/\d{1,2}/\d{2},\s\d{1,2}:\d{2}\s[APap][Mm]\s-\s',(data.split("\n")[0])):
-        df=preprocessor.preprocessy12(data)
-    elif re.match(r'\d{1,2}/\d{1,2}/\d{4},\s\d{1,2}:\d{2}\s[APap][Mm]\s-\s',(data.split("\n")[0])):
-        df=preprocessor.preprocessY12(data)
-    elif re.match('\d{1,2}/\d{1,2}/\d{2},\s\d{1,2}:\d{2}\s-\s',(data.split("\n")[0])):
-        df=preprocessor.preprocessy24(data)
-    elif re.match('\d{1,2}/\d{1,2}/\d{4},\s\d{1,2}:\d{2}\s-\s',(data.split("\n")[0])):
-        df=preprocessor.preprocessY24(data)
-    else:
-        df=preprocessor.preprocessY12(data)
+    for i in range(10):
+        if re.match(r'\d{1,2}/\d{1,2}/\d{2},\s\d{1,2}:\d{2}\s[APap][Mm]\s-\s',(data.split("\n")[0])):
+            df=preprocessor.preprocessy12(data)
+            break
+        elif re.match(r'\d{1,2}/\d{1,2}/\d{4},\s\d{1,2}:\d{2}\s[APap][Mm]\s-\s',(data.split("\n")[0])):
+            df=preprocessor.preprocessY12(data)
+            break
+        elif re.match('\d{1,2}/\d{1,2}/\d{2},\s\d{1,2}:\d{2}\s-\s',(data.split("\n")[0])):
+            df=preprocessor.preprocessy24(data)
+            break
+        elif re.match('\d{1,2}/\d{1,2}/\d{4},\s\d{1,2}:\d{2}\s-\s',(data.split("\n")[0])):
+            df=preprocessor.preprocessY24(data)
+            break
     #df=preprocessor.preprocess(data)
 
     st.dataframe(df)
